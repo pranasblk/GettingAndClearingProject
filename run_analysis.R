@@ -29,7 +29,7 @@ meanStdFields$colName <- lapply(meanStdFields$colName, FUN = function(s) {
   t <- sub("^(t)([A-Z])", "time\\2", t)
   t <- sub("(Gyro)([A-Z])", "Gyroscope\\2", t)
   t <- sub("(Acc)([A-Z])", "Acceleration\\2", t)
-  t <- sub("(Mag)([A-Z])", "Magnitute\\2", t)
+  t <- sub("(Mag)([A-Z])", "Magnitude\\2", t)
   t
 } )
 activityLevels <- c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING")
@@ -64,4 +64,4 @@ x <- rbind(xTrain, xTest)
 ## independent tidy data set with the average of each variable for each activity and each subject.
 tidyData <- aggregate(x, by=list(activity$activity, subject$subject), FUN=mean, na.rm = TRUE)
 names(tidyData)[1:2] <- c("activity", "subject")
-write.table(tidyData, "tidyData.txt") 
+write.table(tidyData, "tidyData.txt", row.name=FALSE) 
